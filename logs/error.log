@@ -1,0 +1,6 @@
+{"level":"error","message":"Unexpected error: [object Object]","service":"irctc-api","timestamp":"2025-02-12 16:15:13"}
+{"level":"error","message":"Unexpected error: [object Object]","service":"irctc-api","timestamp":"2025-02-12 16:16:50"}
+{"level":"error","message":"Unexpected error: [object Object]","service":"irctc-api","timestamp":"2025-02-12 16:18:47"}
+{"level":"error","message":"Unexpected error: [object Object]","service":"irctc-api","timestamp":"2025-02-12 16:38:30"}
+{"level":"error","message":"Unexpected error: [object Object]","service":"irctc-api","timestamp":"2025-02-12 16:40:39"}
+{"level":"error","message":"Unexpected error: TypeError: supabase.transaction is not a function","service":"irctc-api","timestamp":"2025-02-12 16:43:24"}

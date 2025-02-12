@@ -1,0 +1,275 @@
+{
+    "info": {
+        "_postman_id": "YOUR_POSTMAN_COLLECTION_ID",
+        "name": "IRCTC API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth - Register",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{API_BASE_URL}}/auth/register",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Auth - Login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{API_BASE_URL}}/auth/login",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Trains - Add Train (Admin)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "x-api-key",
+                        "value": "{{ADMIN_API_KEY}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"train_name\": \"Express Train\",\n    \"source_station\": \"Mumbai\",\n    \"destination_station\": \"Delhi\",\n    \"total_seats\": 200\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{API_BASE_URL}}/trains",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "trains"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Trains - Update Seats (Admin)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "x-api-key",
+                        "value": "{{ADMIN_API_KEY}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"total_seats\": 250\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{API_BASE_URL}}/trains/1/seats",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "trains",
+                        "1",
+                        "seats"
+                    ],
+                    "variable": [
+                        {
+                            "key": "trainId",
+                            "value": "1"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Trains - Get Availability (User)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{USER_TOKEN}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{API_BASE_URL}}/trains/availability?source=Mumbai&destination=Delhi",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "trains",
+                        "availability"
+                    ],
+                    "query": [
+                        {
+                            "key": "source",
+                            "value": "Mumbai"
+                        },
+                        {
+                            "key": "destination",
+                            "value": "Delhi"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Bookings - Book Seat (User)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{USER_TOKEN}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"train_id\": 1,\n    \"seat_count\": 2\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{API_BASE_URL}}/bookings",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "bookings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Bookings - Get Booking Details (User)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{USER_TOKEN}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{API_BASE_URL}}/bookings/1",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "bookings",
+                        "1"
+                    ],
+                    "variable": [
+                        {
+                            "key": "bookingId",
+                            "value": "1"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Users - Get My Details (User)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{USER_TOKEN}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{API_BASE_URL}}/users/me",
+                    "host": [
+                        "{{API_BASE_URL}}"
+                    ],
+                    "path": [
+                        "users",
+                        "me"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "API_BASE_URL",
+            "value": "http://localhost:3000/api"
+        },
+        {
+            "key": "ADMIN_API_KEY",
+            "value": "1234567890"
+        },
+        {
+            "key": "USER_TOKEN",
+            "value": "YOUR_USER_JWT_TOKEN"
+        }
+    ]
+}
