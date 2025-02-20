@@ -7,7 +7,7 @@ const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error("Supabase URL or Anon Key is missing in .env file");
-  process.exit(1); // Exit if configuration is missing
+  process.exit(1);
 }
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);

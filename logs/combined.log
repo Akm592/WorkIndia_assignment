@@ -56,3 +56,5 @@
 {"level":"error","message":"Unexpected error: ReferenceError: bookingRepository is not defined","service":"irctc-api","timestamp":"2025-02-20 03:32:10"}
 {"level":"info","message":"Server is running on port 3000","service":"irctc-api","timestamp":"2025-02-20 03:33:07"}
 {"level":"info","message":"Server is running on port 3000","service":"irctc-api","timestamp":"2025-02-20 03:33:29"}
+{"level":"info","message":"Server is running on port 3000","service":"irctc-api","timestamp":"2025-02-20 14:36:05"}
+{"level":"info","message":"Server is running on port 3000","service":"irctc-api","timestamp":"2025-02-20 14:36:10"}
