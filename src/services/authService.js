@@ -14,7 +14,7 @@ const registerUser = async (username, password) => {
     username,
     hashedPassword,
     "user"
-  ); // Default role 'user'
+  );
   return newUser;
 };
 

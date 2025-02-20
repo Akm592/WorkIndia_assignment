@@ -17,10 +17,10 @@ const findUserByUsername = async (username) => {
     .from("users")
     .select("*")
     .eq("username", username)
-    .single(); // Expecting single user with unique username
+    .single();
 
   if (error) {
-    return null; // User not found or other error
+    return null;
   }
   return data;
 };

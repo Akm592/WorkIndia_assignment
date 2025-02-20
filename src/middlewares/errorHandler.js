@@ -7,7 +7,7 @@ const errorHandler = (err, req, res, next) => {
 
   if (!(err instanceof ApiError)) {
     logger.error(`Unexpected error: ${err}`);
-    // Optionally, convert unexpected errors to ApiError for consistent response
+
     err = new ApiError(500, "Internal Server Error", false, err.stack);
   } else {
     logger.warn(`Operational error: ${err.message}, Status: ${err.statusCode}`);
@@ -17,7 +17,7 @@ const errorHandler = (err, req, res, next) => {
     status: "error",
     statusCode,
     message: message,
-    ...(process.env.NODE_ENV === "development" && { stack: err.stack }), // Optionally send stack in development
+    ...(process.env.NODE_ENV === "development" && { stack: err.stack }), 
   });
 };
 

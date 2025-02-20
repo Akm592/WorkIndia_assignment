@@ -1,34 +1,19 @@
-import bookingRepository from "../repositories/bookingRepository.js";
-import trainRepository from "../repositories/trainRepository.js";
 import ApiError from "../utils/apiError.js";
 import supabase from "../config/database.js";
+import bookingRepository from "../repositories/bookingRepository.js";
 
 const bookSeat = async (userId, trainId, seatCount) => {
-  return await supabase.transaction(async () => {
-    const train = await trainRepository.getTrainById(trainId);
-    if (!train) {
-      throw new ApiError(404, "Train not found");
-    }
-    if (train.available_seats < seatCount) {
-      throw new ApiError(400, "Not enough seats available");
-    }
-
-    const { error: updateError } = await supabase
-      .from("trains")
-      .update({ available_seats: train.available_seats - seatCount })
-      .eq("id", trainId);
-
-    if (updateError) {
-      throw updateError;
-    }
-
-    const booking = await bookingRepository.createBooking(
-      userId,
-      trainId,
-      seatCount
-    );
-    return booking;
+  const { data, error } = await supabase.rpc("book_seat", {
+    p_user_id: userId,
+    p_train_id: trainId,
+    p_seat_count: seatCount,
   });
+
+  if (error) {
+    throw new ApiError(500, error.message);
+  }
+
+  return data;
 };
 
 const getBookingDetails = async (bookingId, userId) => {
